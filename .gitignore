@@ -1,0 +1,9 @@
+#Dirs
+.pycharm
+.vscode
+__pycache__
+.idea
+.DS_Store
+#Files
+*.pyc
+#db.sqlite3

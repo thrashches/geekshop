@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Редактирование пользователя</h1>
+    {% if form.errors %}
+  <p>Одно или несколько полей заполнены неправильно.</p>
+{% endif %}
+
+
+  {% if user.is_authenticated %}
+
+  {% endif %}
+
+
+<form method="post" action="{% url 'client_area:edit' %}">
+
+        {% csrf_token %}
+        {{ form|crispy }}
+<div class="pt-3">
+<input type="submit" class="btn btn-success float-right" value="Сохранить" />
+</div>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+</div>
+
+{% endblock %}

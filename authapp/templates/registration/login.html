@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Вход для клиентов</h1>
+    {% if form.errors %}
+  <p>Неверный логин или пароль.</p>
+{% endif %}
+
+
+  {% if user.is_authenticated %}
+    <script type="text/javascript">
+        location="/";
+    </script>
+  {% endif %}
+
+
+<form method="post" action="{% url 'login' %}">
+
+        {% csrf_token %}
+        {{ form|crispy }}
+<div class="pt-3">
+<input type="submit" class="btn btn-success float-right" value="login" />
+</div>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    <a href="{% url 'authapp:register' %}">Создать аккаунт</a>
+</div>
+
+{% endblock %}

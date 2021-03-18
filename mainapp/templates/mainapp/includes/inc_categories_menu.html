@@ -1,0 +1,16 @@
+<ul class="links-menu">
+    <li>
+        {% url 'products:category' 0 as category_all %}
+        <a href="{% url 'products:category' 0 %}" {% if category_all in request.path %}class="active" {% endif %}>
+            все
+        </a>
+    </li>
+    {% for link in links_menu %}
+        {% url 'products:category' link.pk as category_path %}
+    <li>
+        <a href="{% url 'products:category' link.pk %}"{% if category_path in request.path %}class="active" {% endif %}>
+            {{ link.name }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

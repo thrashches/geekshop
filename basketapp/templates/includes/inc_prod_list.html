@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Название товара</th>
+        <th>Количество</th>
+        <th></th>
+        <th>Стоимость</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+{% for item in basket %}
+      <tr>
+        <td>{{ item.product.name }}</td>
+        <td><input type="number"  name="{{ item.pk }}" min="0" value="{{ item.quantity }}"></td>
+        <td>Х</td>
+        <td>{{ item.product.price }} руб.</td>
+        <td><img src="{% static 'img/trash.png' %}" onclick='window.location.href="{% url 'basket:remove' item.pk %}"'></td>
+      </tr>
+      {% endfor %}
+ </tbody>
+  </table>
+<h3>{{ basket.0.total_quantity }} товаров на {{ basket.0.total_price }} рублей</h3>

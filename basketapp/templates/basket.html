@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport", initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>
+        {% block title %}
+        {{ title|capfirst }}
+        {% endblock title %}
+    </title>
+
+
+
+    {% block js %}
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/basket_script.js' %}"></script>
+    {% endblock js %}
+
+
+
+</head>
+<body>
+<div class="container">
+
+        {% block menu %}
+<div class="hero-white">
+    <div class="header clearfix">
+        <a href="{% url 'main' %}" class="logo"></a>
+        {% include 'mainapp/includes/inc_menu.html' %}
+
+    </div>
+</div>
+{% endblock %}
+<div class="container col-md-12">
+<div class="details">
+
+{% block content %}
+  <h2>Корзина</h2>
+    </div>
+
+
+<div class="content">
+
+    {% include 'includes/inc_prod_list.html' %}
+
+</div>
+
+  </div>
+
+<button type="button" class="btn btn-success pull-right">Оформить заказ</button>
+    </div>
+{% endblock %}
+
+
+</body>
+</html>
